@@ -2,7 +2,7 @@
 
 //
 // Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
-// v0.1.0
+// v0.1.1
 //
 // Will first fetch your .md markdown document,
 // then uses the GitHub API to render it to pure HTML.
@@ -118,7 +118,7 @@ function generateDocumentURL($_repository, $_path = 'README.md', $_user = USER)
 	return $result;
 }
 
-function renderMarkdown($_document, $_repository)
+function renderMarkdown($_document, $_repository, $_user = USER)
 {
 	$data = array('text' => $_document);
 	$headers = array(
@@ -133,9 +133,9 @@ function renderMarkdown($_document, $_repository)
 		'mode' => MODE
 	);
 
-	if(is_string($_repository))
+	if(is_string($_repository) && is_string($_user))
 	{
-		$data['context'] = 'kekse1/' . $_repository;
+		$data['context'] = $_user . '/' . $_repository;
 	}
 
 	return \kekse\httpRequest(API, 'POST', $headers, $data);
@@ -150,7 +150,7 @@ function getMarkdownDocument($_repository, $_path = 'README.md', $_user = USER)
 function getMarkdownHTML($_repository, $_path = 'README.md', $_user = USER)
 {
 	$document = getMarkdownDocument($_repository, $_path, $_user);
-	return renderMarkdown($document, $_repository);
+	return renderMarkdown($document, $_repository, $_user);
 }
 
 ?>
