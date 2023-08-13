@@ -16,6 +16,10 @@ So I just needed a PHP script which hides the token and the whole request, etc.
 ## Usage
 Just use the `\kekse\getMarkdownHTML()` function, it'll **return** the HTML code.
 
+## Dependencies
+The `cURL` PHP module. Should be installed most times, but if not, on Debian/Linux it's enough to
+just `apt install php-curl`.
+
 ## TODO
 I'm going to integrate a function so PHP will directly output the HTML code, but that's not _that_
 important **for now, for me**.. TODO. ^\_^
