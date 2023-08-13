@@ -1,6 +1,3 @@
 
-	# config file
-
 	# direct output, by $_GET[] request
-
 

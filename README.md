@@ -1,6 +1,6 @@
 <img src="https://kekse.biz/php/count.php?draw&override=github:github-markdown&text=v4&draw" />
 
-# v**0.1.1**
+# v**0.2.0**
 Uses the GitHub API to convert a `.md` Markdown document (like any `README.md`) to pure HTML.
 
 ## Reason
@@ -16,6 +16,12 @@ So I just needed a PHP script which hides the token and the whole request, etc.
 ## Usage
 Just use the `\kekse\getMarkdownHTML()` function, it'll **return** the HTML code.
 
+## Configuration
+I put some `define()` into the `github-markdown.inc.php`, which needs to be in
+the same directory as the script itself.
+
+So it's easier to update the script to newer versions.
+
 ## Dependencies
 The `cURL` PHP module. Should be installed most times, but if not, on Debian/Linux it's enough to
 just `apt install php-curl`.
@@ -23,8 +29,6 @@ just `apt install php-curl`.
 ## TODO
 I'm going to integrate a function so PHP will directly output the HTML code, but that's not _that_
 important (for now).
-
-Additionally I'll setup an extra config file (for user and token).
 
 ## Copyright and License
 The Copyright is [(c) Sebastian Kucharczyk](COPYRIGHT.txt),

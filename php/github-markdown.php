@@ -2,7 +2,7 @@
 
 //
 // Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
-// v0.1.1
+// v0.2.0
 //
 // Will first fetch your .md markdown document,
 // then uses the GitHub API to render it to pure HTML.
@@ -24,6 +24,10 @@ if(!extension_loaded('curl'))
 {
 	die('No cURL module loaded!');
 }
+else
+{
+	require_once(__DIR__ . '/github-markdown.inc.php');
+}
 
 //
 function getMarkdownHTML(... $_args)
@@ -32,7 +36,7 @@ function getMarkdownHTML(... $_args)
 }
 
 //
-const TIMEOUT = 16;
+if(!defined('TIMEOUT')) define('TIMEOUT', 16);
 
 function httpRequest($_url, $_method = 'GET', $_headers = null, $_data = null)
 {
@@ -97,14 +101,8 @@ function httpRequest($_url, $_method = 'GET', $_headers = null, $_data = null)
 namespace kekse\github;
 
 //
-const USER = '';
-const TOKEN = '';
-
-//
-const MODE = 'gfm'; //'gfm' vs. 'markdown'
-
-//
 const API = 'https://api.github.com/markdown';
+const API_VERSION = '2022-11-28';
 const RAW = 'https://raw.githubusercontent.com/%{user}/%{repository}/master/';
 const AGENT = 'https://github.com/kekse1/';
 
@@ -124,7 +122,7 @@ function renderMarkdown($_document, $_repository, $_user = USER)
 	$headers = array(
 		'Accept' => 'application/vnd.github+json',
 		'Authorization' => 'Bearer ' . TOKEN,
-		'X-GitHub-Api-Version' => '2022-11-28',
+		'X-GitHub-Api-Version' => API_VERSION,
 		'User-Agent' => AGENT
 	);
 
