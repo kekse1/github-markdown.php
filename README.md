@@ -22,5 +22,11 @@ just `apt install php-curl`.
 
 ## TODO
 I'm going to integrate a function so PHP will directly output the HTML code, but that's not _that_
-important **for now, for me**.. TODO. ^\_^
+important (for now).
+
+Additionally I'll setup an extra config file (for user and token).
+
+## Copyright and License
+The Copyright is [(c) Sebastian Kucharczyk](COPYRIGHT.txt),
+and it's licensed under the [MIT](LICENSE.txt) (also known as 'X' or 'X11' license).
 
