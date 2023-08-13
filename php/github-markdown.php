@@ -4,16 +4,17 @@
 // Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
 // v0.1.0
 //
-// Will first fetch your .md markdown document, then uses the GitHub API
-// to render it to pure HTML.
+// Will first fetch your .md markdown document,
+// then uses the GitHub API to render it to pure HTML.
 //
-// But you first have to set the following constants (on the bottom) to your needs:
+// But you first have to set the following constants (somewhere in the
+// middle of this script) to your needs:
 //
 // 	TOKEN
 // 	USER
 // 	MODE (maybe)
 //
-// And maybe also the 'TIMEOUT' constant (below).
+// And maybe you also want to adapt the 'TIMEOUT' constant (below)?
 //
 
 //
