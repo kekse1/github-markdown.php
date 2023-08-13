@@ -10,6 +10,10 @@ token, which 'd be visible in the JavaScript code.
 
 So I just needed a PHP script which hides the token and the whole request, etc.
 
+## _**UPDATE**_
+_It seems the API conversion itself also works without an Auth-TOKEN, so I can solve it in plain
+JavaScript, too!_ So this script is not really important any longer; use it as reference if you want.
+
 ## Download
 * [github-markdown.php](php/github-markdown.php)
 
