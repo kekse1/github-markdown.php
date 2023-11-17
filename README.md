@@ -34,7 +34,7 @@ just `apt install php-curl`.
 I'm going to integrate a function so PHP will directly output the HTML code, but that's not _that_
 important (for now).
 
-## Copyright and License
+# Copyright and License
 The Copyright is [(c) Sebastian Kucharczyk](COPYRIGHT.txt),
 and it's licensed under the [MIT](LICENSE.txt) (also known as 'X' or 'X11' license).
 
