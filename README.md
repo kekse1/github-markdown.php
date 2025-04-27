@@ -16,7 +16,7 @@ _It seems the API conversion itself also works without an Auth-TOKEN, so I can s
 JavaScript, too!_ So this script is not really important any longer; use it as reference if you want.
 
 ## Download
-* [github-markdown.php](php/github-markdown.php)
+* [github-markdown.php](src/github-markdown.php)
 
 ## Usage
 Just use the `\kekse\getMarkdownHTML()` function, it'll **return** the HTML code.
