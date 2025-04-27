@@ -2,7 +2,7 @@
 
 //
 // Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
-// v0.2.0
+// v0.2.1
 //
 // Will first fetch your .md markdown document,
 // then uses the GitHub API to render it as HTML.
@@ -59,7 +59,7 @@ function httpRequest($_url, $_method = 'GET', $_headers = null, $_data = null)
 		}
 		else if(! is_string($_data))
 		{
-			die('Invalid $_data argument (neither array nor string)');
+			die('Invalid $_data argument (neither Array nor String)');
 		}
 
 		curl_setopt($curl, CURLOPT_POSTFIELDS, $_data);

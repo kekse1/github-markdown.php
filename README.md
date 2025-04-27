@@ -1,7 +1,7 @@
 <img src="https://kekse.biz/github.php?draw&override=github:github-markdown.php" />
 
 
-# v**0.2.0**
+# v**0.2.1**
 Uses the GitHub API to convert a `.md` Markdown document (like any `README.md`) to pure HTML.
 
 > [!TIP]
