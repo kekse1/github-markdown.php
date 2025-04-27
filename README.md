@@ -4,6 +4,9 @@
 # v**0.2.0**
 Uses the GitHub API to convert a `.md` Markdown document (like any `README.md`) to pure HTML.
 
+> [!TIP]
+> It uses the `cURL` Library for the HTTP request. In case you want too see an example for it.
+
 ## Reason
 The reason for this script is this: first I wanted to embed the HTML code via JavaScript `fetch()`,
 but as I wanted to use the GitHub API to convert from `.md`, the HTTP API request would need my own

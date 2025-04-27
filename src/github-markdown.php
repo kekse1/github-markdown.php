@@ -5,7 +5,7 @@
 // v0.2.0
 //
 // Will first fetch your .md markdown document,
-// then uses the GitHub API to render it to pure HTML.
+// then uses the GitHub API to render it as HTML.
 //
 // But you first have to set the following constants (somewhere in the
 // middle of this script) to your needs:
