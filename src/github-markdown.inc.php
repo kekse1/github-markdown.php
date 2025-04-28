@@ -6,5 +6,6 @@ define('USER', '');
 define('MODE', 'gfm');//'gfm' or 'markdown'
 
 define('TIMEOUT', 30);
+define('FAMILY', 0);
 
 ?>
