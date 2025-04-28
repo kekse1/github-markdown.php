@@ -2,24 +2,22 @@
 
 //
 // Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
-// v0.2.1
+// v0.3.0
 //
 // Will first fetch your .md markdown document,
 // then uses the GitHub API to render it as HTML.
 //
-// But you first have to set the following constants (somewhere in the
-// middle of this script) to your needs:
-//
-// 	TOKEN
-// 	USER
-// 	MODE (maybe)
-//
-// And maybe you also want to adapt the 'TIMEOUT' constant (below)?
+// It's an example for using the cURL library for HTTP requests,
+// used here in combination with some GitHub API.
 //
 
 //
 namespace kekse;
 
+//
+const DEFAULT_TIMEOUT = 30;
+
+//
 if(!extension_loaded('curl'))
 {
 	die('No cURL module loaded!');
@@ -30,15 +28,94 @@ else
 }
 
 //
+if(!defined('TIMEOUT')) define('TIMEOUT', DEFAULT_TIMEOUT);
+
+//
 function getMarkdownHTML(... $_args)
 {
 	return \kekse\github\getMarkdownHTML(... $_args);
 }
 
 //
-if(!defined('TIMEOUT')) define('TIMEOUT', 16);
+function renderHeaders($_headers)
+{
+	$result = [];
+	
+	if(array_is_list($_headers))
+	{
+		$count = count($_headers);
+		
+		for($i = 0, $j = 0; $i < $count; ++$i)
+		{
+			if(is_string($_headers[$i]) && $_headers[$i] !== '')
+			{
+				$result[$j++] = $_headers[$i];
+			}
+		}
+	}
+	else foreach($_headers as $key => $value)
+	{
+		if(is_string($value))
+		{
+			$result[] = trim($key) . ': ' . trim($value);
+		}
+	}
 
-function httpRequest($_url, $_method = 'GET', $_headers = null, $_data = null)
+	return $result;
+}
+
+function parseHeaders($_headers)
+{
+	if(!array_is_list($_headers))
+	{
+		return $_headers;
+	}
+	
+	$count = count($_headers);
+	$result = []; $item;
+
+	for($i = 0; $i < $count; ++$i)
+	{
+		if(!is_string($_headers[$i]) || $_headers[$i] === '')
+		{
+			continue;
+		}
+		
+		$item = explode(':', $_headers[$i], 2);
+		
+		if(count($item) < 2)
+		{
+			continue;
+		}
+
+		$item[0] = trim($item[0]);
+		$item[1] = trim($item[1]);
+
+		$result[$item[0]] = $item[1];
+	}
+	
+	return $result;
+}
+
+function extractUserAgent($_headers)
+{
+	if(array_is_list($_headers))
+	{
+		$_headers = parseHeaders($_headers);
+	}
+	
+	foreach($_headers as $key => $value)
+	{
+		if(strtolower($key) === 'user-agent')
+		{
+			return $value;
+		}
+	}
+	
+	return null;
+}
+
+function httpRequest($_url, $_method = 'GET', $_headers = null, $_data = null, $_timeout = TIMEOUT)
 {
 	//
 	$_method = strtoupper($_method);
@@ -67,11 +144,14 @@ function httpRequest($_url, $_method = 'GET', $_headers = null, $_data = null)
 
 	if(is_array($_headers))
 	{
+		$userAgent = extractUserAgent($_headers);
+		$_headers = prepareHeaders($_headers);
+
 		curl_setopt($curl, CURLOPT_HTTPHEADER, $_headers);
-		
-		if(array_key_exists('User-Agent', $_headers))
+
+		if($userAgent !== null)
 		{
-			curl_setopt($curl, CURLOPT_USERAGENT, $_headers['User-Agent']);
+			curl_setopt($curl, CURLOPT_USERAGENT, $userAgent);
 		}
 	}
 
@@ -98,6 +178,7 @@ function httpRequest($_url, $_method = 'GET', $_headers = null, $_data = null)
 	return $response;
 }
 
+//
 namespace kekse\github;
 
 //

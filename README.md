@@ -1,7 +1,11 @@
 <img src="https://kekse.biz/github.php?draw&override=github:github-markdown.php" />
 
+<br><br>
 
-# v**0.2.1**
+# News
+* \[**2025-04-28**\] Update to v**0.3.0**. Better/fixed **cURL** usage!
+
+# v**0.3.0**
 Uses the GitHub API to convert a `.md` Markdown document (like any `README.md`) to pure HTML.
 
 > [!TIP]
