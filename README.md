@@ -5,11 +5,15 @@
 # News
 * \[**2025-04-28**\] Update to v**0.3.0**. Better/fixed **cURL** usage!
 
+<br><br>
+
 # v**0.3.0**
 Uses the GitHub API to convert a `.md` Markdown document (like any `README.md`) to pure HTML.
 
 > [!TIP]
 > It uses the `cURL` Library for the HTTP request. In case you want too see an example for it.
+
+<br>
 
 ## Reason
 The reason for this script is this: first I wanted to embed the HTML code via JavaScript `fetch()`,
@@ -18,15 +22,21 @@ token, which 'd be visible in the JavaScript code.
 
 So I just needed a PHP script which hides the token and the whole request, etc.
 
-## _**UPDATE**_
-_It seems the API conversion itself also works without an Auth-TOKEN, so I can solve it in plain
-JavaScript, too!_ So this script is not really important any longer; use it as reference if you want.
+> [!NOTE]
+> _It seems the API conversion itself also works without an Auth-TOKEN, so I can solve it in plain
+> JavaScript, too!_ So this script is not really important any longer; use it as reference if you want.
+
+<br>
 
 ## Download
 * [github-markdown.php](src/github-markdown.php)
 
+<br>
+
 ## Usage
 Just use the `\kekse\getMarkdownHTML()` function, it'll **return** the HTML code.
+
+<br>
 
 ## Configuration
 I put some `define()` into the `github-markdown.inc.php`, which needs to be in
@@ -34,16 +44,24 @@ the same directory as the script itself.
 
 So it's easier to update the script to newer versions.
 
+<br>
+
 ## Dependencies
 The `cURL` PHP module. Should be installed most times, but if not, on Debian/Linux it's enough to
 just `apt install php-curl`.
+
+<br>
 
 ## TODO
 I'm going to integrate a function so PHP will directly output the HTML code, but that's not _that_
 important (for now).
 
+<br><br>
+
 # Contact
 <img src="https://kekse.biz/github.php?override=github:github-markdown.php&draw&text=github-markdown.php@kekse.biz&angle=6&size=38pt&fg=150,20,90&font=OpenSans&ro&readonly&h=64&v=16" />
+
+<br>
 
 # Copyright and License
 The Copyright is [(c) Sebastian Kucharczyk](COPYRIGHT.txt),
