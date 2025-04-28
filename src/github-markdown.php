@@ -41,6 +41,11 @@ function getMarkdownHTML(... $_args)
 //
 function renderHeaders($_headers)
 {
+	if(array_is_list($_headers))
+	{
+		return $_headers;
+	}
+
 	$result = [];
 	
 	if(array_is_list($_headers))
@@ -101,11 +106,7 @@ function parseHeaders($_headers)
 
 function extractFromHeaders($_headers, $_subject)
 {
-	if(array_is_list($_headers))
-	{
-		$_headers = parseHeaders($_headers);
-	}
-
+	$_headers = parseHeaders($_headers);
 	$_subject = strtolower($_subject);
 	
 	foreach($_headers as $key => $value)
