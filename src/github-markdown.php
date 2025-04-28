@@ -145,7 +145,7 @@ function httpRequest($_url, $_method = 'GET', $_headers = null, $_data = null, $
 	if(is_array($_headers))
 	{
 		$userAgent = extractUserAgent($_headers);
-		$_headers = prepareHeaders($_headers);
+		$_headers = renderHeaders($_headers);
 
 		curl_setopt($curl, CURLOPT_HTTPHEADER, $_headers);
 
