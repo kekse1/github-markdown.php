@@ -2,12 +2,12 @@
 
 <br><br>
 
-# News
-* \[**2025-04-28**\] Update to v**0.3.1**. Better/fixed **cURL** usage!
+### News
+* \[**2025-04-28**\] Update to v**0.3.2**. Better/fixed **cURL** usage!
 
 <br><br>
 
-# v**0.3.1**
+# v**0.3.2**
 Uses the GitHub API to convert a `.md` Markdown document (like any `README.md`) to pure HTML.
 
 > [!TIP]

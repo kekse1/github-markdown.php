@@ -2,7 +2,7 @@
 
 //
 // Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
-// v0.3.1
+// v0.3.2
 //
 // Will first fetch your .md markdown document,
 // then uses the GitHub API to render it as HTML.
@@ -99,16 +99,18 @@ function parseHeaders($_headers)
 	return $result;
 }
 
-function extractUserAgent($_headers)
+function extractFromHeaders($_headers, $_subject)
 {
 	if(array_is_list($_headers))
 	{
 		$_headers = parseHeaders($_headers);
 	}
+
+	$_subject = strtolower($_subject);
 	
 	foreach($_headers as $key => $value)
 	{
-		if(strtolower($key) === 'user-agent')
+		if(strtolower($key) === $_subject)
 		{
 			return $value;
 		}
@@ -146,7 +148,7 @@ function httpRequest($_url, $_method = 'GET', $_headers = null, $_data = null, $
 
 	if(is_array($_headers))
 	{
-		$userAgent = extractUserAgent($_headers);
+		$userAgent = extractFromHeaders($_headers, 'user-agent');
 		$_headers = renderHeaders($_headers);
 
 		curl_setopt($curl, CURLOPT_HTTPHEADER, $_headers);
