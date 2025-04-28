@@ -155,7 +155,8 @@ function httpRequest($_url, $_method = 'GET', $_headers = null, $_data = null, $
 		}
 	}
 
-	curl_setopt($curl, CURLOPT_TIMEOUT, TIMEOUT);
+	if(is_int($_timeout) && $_timeout >= 0)
+		curl_setopt($curl, CURLOPT_TIMEOUT, $_timeout);
 	//curl_setopt($curl, CURLOPT_HEADER, true);
 
 	//
