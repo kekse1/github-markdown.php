@@ -2,7 +2,7 @@
 
 //
 // Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
-// v0.3.0
+// v0.3.1
 //
 // Will first fetch your .md markdown document,
 // then uses the GitHub API to render it as HTML.
@@ -16,6 +16,7 @@ namespace kekse;
 
 //
 const DEFAULT_TIMEOUT = 30;
+const DEFAULT_FAMILY = 0;
 
 //
 if(!extension_loaded('curl'))
@@ -29,6 +30,7 @@ else
 
 //
 if(!defined('TIMEOUT')) define('TIMEOUT', DEFAULT_TIMEOUT);
+if(!defined('FAMILY')) define('FAMILY', DEFAULT_FAMILY);
 
 //
 function getMarkdownHTML(... $_args)
@@ -115,7 +117,7 @@ function extractUserAgent($_headers)
 	return null;
 }
 
-function httpRequest($_url, $_method = 'GET', $_headers = null, $_data = null, $_timeout = TIMEOUT)
+function httpRequest($_url, $_method = 'GET', $_headers = null, $_data = null, $_timeout = TIMEOUT, $_family = FAMILY)
 {
 	//
 	$_method = strtoupper($_method);
@@ -153,6 +155,16 @@ function httpRequest($_url, $_method = 'GET', $_headers = null, $_data = null, $
 		{
 			curl_setopt($curl, CURLOPT_USERAGENT, $userAgent);
 		}
+	}
+
+	if(is_int($_family)) switch($_family)
+	{
+		case 4:
+			curl_setopt($curl, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
+			break;
+		case 6:
+			curl_setopt($curl, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V6);
+			break;
 	}
 
 	if(is_int($_timeout) && $_timeout >= 0)

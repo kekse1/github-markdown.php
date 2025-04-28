@@ -3,11 +3,11 @@
 <br><br>
 
 # News
-* \[**2025-04-28**\] Update to v**0.3.0**. Better/fixed **cURL** usage!
+* \[**2025-04-28**\] Update to v**0.3.1**. Better/fixed **cURL** usage!
 
 <br><br>
 
-# v**0.3.0**
+# v**0.3.1**
 Uses the GitHub API to convert a `.md` Markdown document (like any `README.md`) to pure HTML.
 
 > [!TIP]
@@ -29,7 +29,8 @@ So I just needed a PHP script which hides the token and the whole request, etc.
 <br>
 
 ## Download
-* [github-markdown.php](src/github-markdown.php)
+* [**`github-markdown.php`**](src/github-markdown.php)
+* [`github-markdown.inc.php`](src/github-markdown.inc.php)
 
 <br>
 
